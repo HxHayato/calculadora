@@ -21,9 +21,8 @@ body {
     align-items: center;
 }
 
-
-
 .calculadora {
+    position: relative;
     background-color: var(--calc-color);
     padding: 15px;
     width: 350px;
@@ -44,6 +43,16 @@ body {
     gap: 5px;
     border-radius: 5px;
     transition: all .50s ease;
+}
+
+.calculadora::after {
+    content: 'Número máx de caracter: 20';
+    position: absolute;
+    color: var(--calc-color);
+    bottom: -25px;
+    left: 10px;
+    font-family: 'Poppins', sans-serif;
+
 }
 
 .titulo {
@@ -172,6 +181,11 @@ body {
     .calculadora {
         width: 200px;
         height: 300px
+    }
+
+    .calculadora::after {
+        bottom: -50px;
+        text-align: center;
     }
 
     .titulo {
