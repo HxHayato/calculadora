@@ -46,7 +46,7 @@ body {
 }
 
 .calculadora::after {
-    content: 'Número máx de caracter: 20';
+    content: 'Número máx de caracter: 18';
     position: absolute;
     color: var(--calc-color);
     bottom: -25px;
@@ -179,12 +179,12 @@ body {
 
 @media Screen and (max-width: 500px) {
     .calculadora {
-        width: 200px;
-        height: 300px
+        margin: 20px;
+        width: 300px;
+        height: 450px;
     }
 
     .calculadora::after {
-        bottom: -50px;
         text-align: center;
     }
 

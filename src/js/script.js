@@ -1,8 +1,10 @@
 let res = document.querySelector('.resultado')
 let msgErro = 'Erro'
 let msgExpLong = 'Expressão muito longa!'
+// let ultDig = verificarUltimoDigito()
 
 function mostrarNaTela(n) {
+
     if (res.value == '0') {
 
         if (n == '.' || n == '+' || n == '-') {
@@ -12,9 +14,21 @@ function mostrarNaTela(n) {
         }
 
     } else if(res.value == msgErro || res.value == msgExpLong) {
+        
         res.value = n
+
+    } else if (n == '/' || n == '*' || n == '+' || n == '-' || n == '.') {
+        
+        if (n == '.') {
+            verificarPonto(n)
+        } else {
+            verificarUltimoDigito(n)
+        }
+
     } else {
+
         res.value += n
+
     }
 }
 
@@ -51,6 +65,33 @@ function calcularVerificando (n) {
     
 
     return resultado
+}
+
+function verificarPonto (n) {
+    let expressao = res.value
+    let ultItem = expressao.slice(-1)
+
+    if (expressao.length >  0) {
+        if (ultItem == '/' || ultItem == '*' || ultItem == '-' || ultItem == '+') {
+            res.value = expressao + '0' + n
+        } else {
+            res.value += n
+        } 
+    } else {
+        res.value += '0' + n
+    }
+    
+}
+
+function verificarUltimoDigito(n) {
+    let expressao = res.value
+    let ultItem = expressao.slice(-1)
+
+    if (ultItem == '/' || ultItem == '*' || ultItem == '-' || ultItem == '+') {
+        res.value = expressao.substring(0, expressao.length - 1) + n
+    } else {
+        res.value += n
+    }
 }
 
 document.addEventListener('keydown', (e) => {
